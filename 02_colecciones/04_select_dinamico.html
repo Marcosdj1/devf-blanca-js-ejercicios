@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>select dinamico</title>
+  <link rel="stylesheet" href="../_recursos/main.css">
+</head>
+<body>
+
+<<h1>select dinamico</h1>
+
+selecciona un pais:
+<select name="pais" id="pais"></select>
+
+<select name="presidentes" id="presidentes"></select>
+<script>
+var paises = ["mexico","estados unidos", "cuba", "canada"];
+var select= document.querySelector("#pais");
+//var select= document.querySelector("#presidentes");
+
+//ciclos/loop/bucles// repeats
+for(i in paises){
+//console.log(i);
+var pais = paises[i];
+//console.log(pais);
+select.innerHTML +=  "<option value=''>"+ pais +"</option>"
+
+/*var presidentes = {
+
+  "mexico":"ensrique peña nieto",
+  "estados unidos": "barack obama",
+  "cuba":"raul castro",
+  "canada": "justin tredeau"
+};*/
+
+/*for(p in presidentes){
+//p trae los keys
+var presidente = presidentes[p];
+select.innerHTML +=  "<option value=''>"+ presidente +"</option>"
+
+}*/
+
+
+}
+
+</script>
+
+<script>
+
+var select= document.querySelector("#presidentes");
+var presidentes = {
+
+  "mexico":"enrique peña nieto",
+  "estados unidos": "barack obama",
+  "cuba":"raul castro",
+  "canada": "justin tredeau"
+};
+for(p in presidentes){
+//p trae los keys
+var presidente = presidentes[p];
+select.innerHTML +=  "<option value=''>"+ presidente +"</option>"
+
+}
+
+</script>
+
+
+</body>
+</html>

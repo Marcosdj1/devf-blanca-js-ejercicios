@@ -8,10 +8,64 @@
 <body>
   <h1> Arreglos </h1>
 
-  <script>
+<label for="seleccion">escoge tu arma: </label>
 
-    // Hola Héctor!! Esta línea escribió Brian.
-    "esto debe ser un conflicto"
+<select name="seleccion" id ="seleccion">
+
+  <option value="piedra">piedra</option>
+  <option value="papel">papel</option>
+  <option value="tijeras">tijeras</option>
+</select>
+<button onclick="jugar();">
+  jugar
+</button>
+<div id="resultado"><div>
+  <script>
+function jugar(){
+
+    var items = ["piedra", "papel", "tijeras"];
+
+    var seleccion_maquina = maquina_escoge(items);
+    var seleccion_jugador = document.querySelector("#seleccion").value;
+//definicion de diccionario
+    var reglas = {
+        piedra: {papel: "pierde", tijeras: "gana"},
+        papel: {tijeras: "pierde", piedra: "gana"},
+        tijeras:{piedra: "pierde", papel: "gana" }
+
+    };
+
+
+    var ganador = definir_ganador(seleccion_jugador, seleccion_maquina, reglas);
+    dibujar("la maquina escogio:"+ seleccion_maquina + ", por lo tanto: " + ganador);
+  }
+    //el primer elemento tiene 0, el segundo 1, 2
+    function definir_ganador(s_jugador, s_maquina, reglas){
+
+
+    if (s_maquina == s_jugador) {
+
+  return "empate";
+    }
+    var regla = reglas[s_jugador];
+//console.log(regla);
+return regla[s_maquina];
+    }
+
+
+    function maquina_escoge(items){
+      var n_random = Math.floor(Math.random() *3);
+      //Math.random
+      //Math.ro
+
+      return items[n_random];
+    }
+    function dibujar(valor){
+    document.querySelector("#resultado").innerHTML = valor;
+}
+//  function agregar_a_resultado(valor){
+
+//  }
 
   </script>
 </body>
