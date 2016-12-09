@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jquery ajax</title>
+  </head>
+  <body>
+    <h1>jquery con ajax</h1>
+    <button id="clima">jalar clima</button>
+    <button id="gif">jalar gif</button>
+    <div id="clima_div"></div>
+    <div id="gif"></div>
+
+
+    <script   src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+    $("#clima").click(function(){
+        console.log("clima click");
+        var url  = "https://api.darksky.net/forecast/167d73a7da1252437ee76e443ce57848/37.8267,-99.214821?lang=es&units=si";
+
+
+        $.getJSON(url, function(resultado){
+          console.log(resultado);
+          $("#clima_div").html(resultado.currently.temperature + "<br>" + resultado.daily.summary);
+
+
+          })
+        });
+    $("#gif").click(function(){
+        console.log("gif click");
+        var url  = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=mexico";
+
+        $getJSON(url, function(rest){
+          console.log(rest);
+          $("#gif").html("<img =''");
+});
+    </script>
+  </body>
+</html>

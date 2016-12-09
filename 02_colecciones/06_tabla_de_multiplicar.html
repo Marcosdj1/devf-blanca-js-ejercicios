@@ -14,23 +14,25 @@
       <div id="resultado"></div>
     </div>
     <script>
+    
         function dibujar_tabla() {
-          var resultado=document.querySelector("#resultado");
+
           var minimo=document.querySelector("#minimo").value;
           var maximo=document.querySelector("#maximo").value;
 
-          minimo = parseInt(minimo);
+
 
           resultado.innerHTML = "";
 
-          for(var i=1; i<=minimo; i++){
-          resultado.innerHTML += "minimo"+i+"<br>";
+          for(var i=minimo; i<=maximo; i++){
+            for (var m = minimo; m <= maximo ; m++) {
+              resultado.innerHTML += i;
+              resultado.innerHTML += "*"+m;
+              resultado.innerHTML += "="+(i*m)+"<br>";
             }
-          /*
-            Ejercicio: Leer minimo y maximo de la pagina, y dibujar una
-            tabla con los productos de todos los numeros entre minimo y maximo.
-           */
-        }
+
+            }
+}
     </script>
   </body>
 </html>

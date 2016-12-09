@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ahorcado</title>
+    <script   src="https://code.jquery.com/jquery-3.1.1.js"></script>
+</head>
+<body>
+    <h3>Ahorcado</h3>
+    <p id="incognita"  style="font-size: 40px;"></p>
+    <p>Para esta palabra tienes: <em id="infoIntento"></em> Intentos.</p>
+    <script>
+    $(document).ready(function () {
+        var palabras = ["parangaricutirimicuaro", "esternocleidomastoideo", "silla", "automovil", "ventana", "morrocoy", "metronidazol", "televisor"];
+        var r="";
+        var palabra_seleccionada="";
+        var itn=0;
+        var temp = new Array();
+        $("#btn_listo").prop("disabled", true)
+        $("#btn_intento").prop("disabled", true)
+        $("#letra").prop("disabled", true)
+        $("#img").hide()
+        $("#img2").hide()
+        var seleccion = prompt("Para seleccionar su palabra ingrese un número del 0 al 7");
+        if(seleccion !=null){
+            for (var i = 0; i < palabras[seleccion].length; i++) {
+                if((palabras[seleccion].length)-1==i){
+                    r+='_';
+                }else{
+                    r+='_ ';
+                }
+            };
+            $("#incognita").text(r);
+            $("#infoIntento").text(palabras[seleccion].length+2);
+            itn=palabras[seleccion].length+2;
+            temp = r.split(" ");
+            palabra_seleccionada = palabras[seleccion];
+            $("#btn_listo").prop("disabled", false)
+            $("#btn_intento").prop("disabled", false)
+            $("#letra").prop("disabled", false)
+        }
+        $("#btn_intento").click(function () {
+            itn--;
+            $("#infoIntento").text(itn);
+            if(itn>0){
+                var letra = $("#letra").val().toLowerCase();
+                for (var i = 0; i < temp.length; i++) {
+                    if(palabra_seleccionada[i] == letra){
+                        temp[i] = letra;
+                    }else{
+                        if(temp[i]!="_"){
+                            // Sin Acciones
+                        }else{
+                            temp[i] = "_ ";
+                        }
+                    }
+                };
+                $("#incognita").text("");
+                $("#incognita").html(temp);
+                $("#letra").val("");
+                $("#letra").focus();
+                if(temp.join('')==palabra_seleccionada){
+                    $("#img2").show()
+                    alert("Ganaste, Efectivamente esa era la palabra!! :D")
+                    window.location.reload(true)
+                }
+            }else{
+                $("#img").show()
+                alert(":(  Perdiste! Intentalo de nuevo.")
+                window.location.reload(true)
+            }
+        });
+        $("#btn_listo").click(function () {
+            var opcion = prompt("Ingresa tu palabra: ");
+        if(opcion !=null){
+            if(opcion == palabra_seleccionada){
+                $("#img2").show()
+                alert("Ganaste, Efectivamente esa era la palabra!! :D")
+                window.location.reload(true)
+            }else{
+                $("#img").show()
+                alert("Perdiste!, Intentalo nuevamente");
+                window.location.reload(true)
+            }
+          }
+        });
+        $("#letra").focus();
+    });
+    </script>
+    <input type="text" id="letra"/>
+    <button id="btn_intento">Intentar</button>
+    <button id="btn_listo">Ya se cual es!</button>
+    <img id="img" src="C:\Users\Marcos\Documents\Dev.f\js_ahorcado (1)\Aho1.gif" alt=""/>
+    <img id="img2" src="C:\Users\Marcos\Documents\Dev.f\js_ahorcado (1)\Aho7.gif" alt=""/>
+</script></body>
+</html>
